@@ -1,44 +1,25 @@
 import numpy as np
 import random
-# a = np.random.rand(5)
-# print(a.dtype)
-# print(random.choices(range(5),a,k = 1))
+from MDPCGEnv import Env
+from FW_PE import *
 
+try:
+    a=np.load("aaa.npy")
+except IOError:
+    a = np.arange(12).reshape(3,2,2)
+    np.save("aaa",a)
 
-X = np.zeros((2,2,3,1))
-V = np.zeros((2,2,3,3))
-
-a = np.array([[5,6],[7,8]])
-
-b = np.array([[1],[2]])
 print(a)
-print(b)
-print(a@b)
 
-# print(a ** 2 )
+env = Env()
+N = env.N
+m = np.ones((N)) / N  # the initial distribution
 
-# X[:,0,0] = np.ones(3)
-# X[:,1,0] = a
-# print(X[:,:,0])
+# FW_PE(env,200,m)
 
-# X[:,:,:,0] = np.array([a ** k for k in range(3)]).T
-# print (X[:,:] @ X[:,:].T)
-# print(X[0,0])
-# print(X[0,0] @ X[0,0].T)
-# print(V)
-# print(X)
+pi = np.zeros(5)
 
-# b = np.zeros((3,2,2))
-# c = np.ones((3,2,1))
-# d = np.zeros((3,2,2))
-# for i in range(3):
-#     d[i] = c[i] @ c[i].T
+for i in range(5):
+    pi[i] = np.random.random(1)
 
-# print(d)
-
-def fun():
-    return 1,2,3
-
-A,B,C = fun()
-
-print(A,B,C)
+print(pi)

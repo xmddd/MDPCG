@@ -20,7 +20,7 @@ edges_info = pd.read_excel(r'./SanFrancisco_graph.xlsx', sheet_name='edges')
 CustomerDemandRate_info = pd.read_excel(
     r'./SanFrancisco_graph.xlsx', sheet_name='CustomerDemandRate')
 
-D_avg = np.mean(np.array(edges_info.values[:, 2]))  # 1.89
+D_avg = np.mean(np.array(edges_info.values[:, 2])) 
 tau = Rate * D_avg * TimeInterval
 # print(D_avg)
 
@@ -74,7 +74,7 @@ class Env:
                 i = e.target
                 d[t, j, i] = self.cost(t, j, i, x[t, j, i])
         if noise:
-            eta = np.random.normal(loc=0, scale=1,size=(self.T,self.N,self.N))
+            eta = np.random.normal(loc=0, scale=10,size=(self.T,self.N,self.N))
             d += eta
         return d
 
